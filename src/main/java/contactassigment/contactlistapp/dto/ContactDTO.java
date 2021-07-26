@@ -105,7 +105,20 @@ public class ContactDTO
     OrganisationDTO org = getOrganisation();
     if (org != null)
     {
-      return org.getName();
+      return org.getName() + "(" + org.getAbn() + ")";
+    }
+    else
+    {
+      return Constants.EMPTY_STRING;
+    }
+  }
+
+  public String getOrganisationAbn()
+  {
+    OrganisationDTO org = getOrganisation();
+    if (org != null)
+    {
+      return org.getAbn();
     }
     else
     {

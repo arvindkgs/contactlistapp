@@ -22,6 +22,11 @@
            </div>
 
            <div class="form-group">
+               <label for="organisationAbn">Organisation ABN</label>
+               <input id="organisationAbn" value="${contact.organisationAbn}" class="form-control" readonly>
+           </div>
+
+           <div class="form-group">
                <label for="createdDate">Created</label>
                <input id="createdDate" value="${contact.createdDate}" class="form-control" readonly>
            </div>

@@ -46,7 +46,7 @@
 						path="organisation.id" cssClass="form-control">
                                 <form:option value="-1" label="--" />
                                 <form:options items="${organisations}"
-							itemValue="id" itemLabel="name" />
+							itemValue="id" itemLabel="info" />
                             </form:select>
                         </div>
                     </spring:bind>

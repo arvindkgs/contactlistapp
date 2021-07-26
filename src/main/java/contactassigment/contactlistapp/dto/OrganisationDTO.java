@@ -25,6 +25,15 @@ public class OrganisationDTO
 
   private Integer id;
   private String name;
+  private String abn;
+
+  public String getAbn() {
+    return abn;
+  }
+
+  public void setAbn(String abn) {
+    this.abn = abn;
+  }
 
   public OrganisationDTO()
   {
@@ -34,6 +43,11 @@ public class OrganisationDTO
   {
     setId(organisation.getId());
     setName(organisation.getName());
+    setAbn(organisation.getAbn());
+  }
+
+  public String getInfo() {
+    return name + "(" + abn + ")";
   }
 
   public Integer getId()
