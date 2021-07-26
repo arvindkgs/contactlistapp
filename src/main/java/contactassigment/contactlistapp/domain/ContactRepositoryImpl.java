@@ -17,12 +17,18 @@ public class ContactRepositoryImpl implements ContactRepositoryCustom
   EntityManager em;
 
   @Override
-  public List<Contact> searchByNamesFetchOrganisation(String contactName, String organisationName)
+  public List<Contact> searchByNamesFetchOrganisation(String firstName, String lastName, String organisationName)
   {
+    firstName = firstName.replace('*', '%');
+    lastName = lastName.replace('*', '%');
     StringBuilder sbuilder = new StringBuilder("SELECT c FROM Contact c LEFT JOIN FETCH c.organisation o ");
-    if (StringUtils.hasText(contactName))
+    if (StringUtils.hasText(firstName))
     {
-      sbuilder.append("AND c.name like :contactNamePattern ");
+      sbuilder.append("AND c.firstName like :contactFirstNamePattern ");
+    }
+    if (StringUtils.hasText(lastName))
+    {
+      sbuilder.append("AND c.lastName like :contactFirstNamePattern ");
     }
     if (StringUtils.hasText(organisationName))
     {
@@ -33,9 +39,13 @@ public class ContactRepositoryImpl implements ContactRepositoryCustom
     logger.debug("Query HQL: " + queryHQL);
     javax.persistence.Query q = em.createQuery(queryHQL);
 
-    if (StringUtils.hasText(contactName))
+    if (StringUtils.hasText(firstName))
     {
-      q.setParameter("contactNamePattern", contactName);
+      q.setParameter("contactFirstNamePattern", firstName+"%");
+    }
+    if (StringUtils.hasText(lastName))
+    {
+      q.setParameter("contactFirstNamePattern", lastName+"%");
     }
     if (StringUtils.hasText(organisationName))
     {

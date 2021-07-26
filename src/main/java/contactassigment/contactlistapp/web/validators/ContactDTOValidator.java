@@ -21,11 +21,16 @@ public class ContactDTOValidator implements Validator
 
   public void validate(Object obj, Errors e)
   {
-    ValidationUtils.rejectIfEmpty(e, "name", "name.empty");
+    ValidationUtils.rejectIfEmpty(e, "firstName", "firstName.empty");
+    ValidationUtils.rejectIfEmpty(e, "lastName", "lastName.empty");
     ContactDTO p = (ContactDTO) obj;
-    if (p.getName().length() > 30)
+    if (p.getFirstName().length() > 30)
     {
-      e.rejectValue("name", "name.too.long");
+      e.rejectValue("firstName", "name.too.long");
+    }
+    if (p.getLastName().length() > 30)
+    {
+      e.rejectValue("lastName", "name.too.long");
     }
   }
 }

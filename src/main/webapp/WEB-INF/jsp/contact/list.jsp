@@ -8,9 +8,17 @@
     <jsp:body>
         <form:form method="get" modelAttribute="searchCriteria" commonName="searchCriteria" cssClass="form-horizontal">
             <div class="form-group">
-                <label for="name" class="col-md-3 control-label">Name</label>
+                <label for="firstName" class="col-md-3 control-label">Name</label>
                 <div class="col-sm-6">
-                    <form:input path="name" type="text" cssClass="form-control" id="name" placeholder="Enter name to search for here...." />
+                    <form:input path="firstName" type="text" cssClass="form-control" id="firstName" placeholder="Enter firstName to search for here...." />
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName" class="col-md-3 control-label">Name</label>
+                <div class="col-sm-6">
+                    <form:input path="lastName" type="text" cssClass="form-control" id="lastName" placeholder="Enter lastName to search for here...." />
                 </div>
                 <div class="col-sm-3"></div>
             </div>
@@ -46,7 +54,7 @@
                     </thead>
                     <c:forEach var="contact" items="${contacts}">
                         <tr class="vert-align">
-                            <td>${contact.name}</td>
+                            <td>${contact.firstName} ${contact.lastName}</td>
                             <td>${contact.organisationInfo}</td>
                             <td class="text-center">
                                 <a href="<c:url value="/contacts/${contact.id}"/>" class="btn btn-sm btn-info" style="padding: 0px 0px; width: 40px;">View</a>

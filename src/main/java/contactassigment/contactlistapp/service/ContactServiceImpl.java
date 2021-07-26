@@ -47,7 +47,7 @@ public class ContactServiceImpl implements ContactService
     logger.debug("Query Criteria: " + criteria);
 
     List<Contact> resultList = contactRepo.searchByNamesFetchOrganisation(
-        criteria.getName(), criteria.getOrganisationName());
+        criteria.getFirstName(), criteria.getLastName(), criteria.getOrganisationName());
 
     return ContactDTO.createListBy(resultList);
   }
@@ -63,7 +63,8 @@ public class ContactServiceImpl implements ContactService
           String.format("Unable to find Entity: %s with id: %d", Contact.class.getCanonicalName(), contactDTO.getId()));
     }
 
-    persistedContact.setName(contactDTO.getName());
+    persistedContact.setFirstName(contactDTO.getFirstName());
+    persistedContact.setLastName(contactDTO.getLastName());
     if (Integer.valueOf("-1").equals(contactDTO.getOrganisation().getId()))
     {
       persistedContact.setOrganisation(null);
