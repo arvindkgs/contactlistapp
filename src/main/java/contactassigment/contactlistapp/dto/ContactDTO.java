@@ -1,13 +1,18 @@
 package contactassigment.contactlistapp.dto;
 
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import contactassigment.contactlistapp.domain.Contact;
 import contactassigment.contactlistapp.domain.Organisation;
+import org.springframework.format.datetime.DateFormatter;
 
 public class ContactDTO
 {
+
+  private static DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy").withZone(ZoneId.of("UTC"));
 
   public static ContactDTO createBy(Contact contact)
   {
@@ -16,7 +21,7 @@ public class ContactDTO
 
   public static List<ContactDTO> createListBy(List<Contact> contacts)
   {
-    List<ContactDTO> contactDTOs = new ArrayList<ContactDTO>(contacts.size());
+    List<ContactDTO> contactDTOs = new ArrayList<>(contacts.size());
     for (Contact c : contacts)
     {
       contactDTOs.add(ContactDTO.createBy(c));
@@ -48,6 +53,16 @@ public class ContactDTO
 
   private OrganisationDTO organisation;
 
+  private String createdDate;
+
+  public String getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(String createdDate) {
+    this.createdDate = createdDate;
+  }
+
   public ContactDTO()
   {
   }
@@ -57,6 +72,7 @@ public class ContactDTO
     setId(contact.getId());
     setFirstName(contact.getFirstName());
     setLastName(contact.getLastName());
+    setCreatedDate(DATE_FORMAT.format(contact.getCreatedDate()));
     Organisation org = contact.getOrganisation();
     if (org != null)
     {

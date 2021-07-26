@@ -8,7 +8,7 @@
     <jsp:body>
         <form:form method="get" modelAttribute="searchCriteria" commonName="searchCriteria" cssClass="form-horizontal">
             <div class="form-group">
-                <label for="firstName" class="col-md-3 control-label">Name</label>
+                <label for="firstName" class="col-md-3 control-label">First Name</label>
                 <div class="col-sm-6">
                     <form:input path="firstName" type="text" cssClass="form-control" id="firstName" placeholder="Enter firstName to search for here...." />
                 </div>
@@ -16,7 +16,7 @@
             </div>
             
             <div class="form-group">
-                <label for="lastName" class="col-md-3 control-label">Name</label>
+                <label for="lastName" class="col-md-3 control-label">Last Name</label>
                 <div class="col-sm-6">
                     <form:input path="lastName" type="text" cssClass="form-control" id="lastName" placeholder="Enter lastName to search for here...." />
                 </div>
@@ -49,6 +49,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Organisation</th>
+                            <th>Date Created</th>
                             <th class="text-center">Action</th>
                         <tr>
                     </thead>
@@ -56,6 +57,7 @@
                         <tr class="vert-align">
                             <td>${contact.firstName} ${contact.lastName}</td>
                             <td>${contact.organisationInfo}</td>
+                            <td>${contact.createdDate}</td>
                             <td class="text-center">
                                 <a href="<c:url value="/contacts/${contact.id}"/>" class="btn btn-sm btn-info" style="padding: 0px 0px; width: 40px;">View</a>
                             </td>

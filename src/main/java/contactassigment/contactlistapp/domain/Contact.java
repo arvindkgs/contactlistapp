@@ -1,6 +1,9 @@
 package contactassigment.contactlistapp.domain;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 public class Contact
@@ -32,6 +35,17 @@ public class Contact
 
   @Column(nullable = false, length = 30)
   private String lastName;
+
+  @CreatedDate
+  private Instant createdDate;
+
+  public Instant getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(Instant createdDate) {
+    this.createdDate = createdDate;
+  }
 
   @ManyToOne(fetch = FetchType.LAZY, optional = true, cascade = CascadeType.MERGE)
   private Organisation organisation;

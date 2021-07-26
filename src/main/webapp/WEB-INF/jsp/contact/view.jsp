@@ -22,6 +22,11 @@
            </div>
 
            <div class="form-group">
+               <label for="createdDate">Created</label>
+               <input id="createdDate" value="${contact.createdDate}" class="form-control" readonly>
+           </div>
+
+           <div class="form-group">
                <a href="${pageContext.servletContext.contextPath}/contacts/${contact.id}/edit" class="btn btn-info">
                    Edit
                </a>
